@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>About Us</title>
 </head>
 <body>
-    <div>
+        <div>
         <span>
             <a href="/">Home</a>
         </span>
         <span>
-            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
         </span>
     </div>
-    Contact Us
+    About Us
 </body>
 </html>
