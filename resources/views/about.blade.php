@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-</head>
-<body>
-     @include('layouts.navigation')
+{{-- Memanggil halaman app.blade.php --}}
+@extends('layouts.app')
+
+{{-- Mengisi @yield('page-title') --}}
+@section('page-title', 'About')
+
+{{-- Mengisi @yield('content') --}}
+@section('content')
     About Us
-</body>
-</html>
+@endsection
