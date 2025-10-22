@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 route::get('/', function () {
-    return 'Homepage';
+    return '<h1>Welcome</h1>';
 });
 
 route::get('/contact', function () {
