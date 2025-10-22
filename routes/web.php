@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+Route::get('/', function () {
+    $name = '<h1>John Doe</h1>';
+    return view('welcome', [ 'name' => $name ]);
+});
 
 Route::view('contact', 'contact');
 

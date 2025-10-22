@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    Welcome to Laravel!
+    <p>
+    My name is <?= $name ?> <!--syntax PHP dengan membaca tag HTML-->
+    </p>
+    <br>
+    <p>
+    My name is {{ $name }} <!--syntax Blade tidak membaca tag HTML (lebih aman dari hacking)-->
+    </p>
+    <br>
+    <p>
+    My name is {!! $name !!} <!--syntax Blade membaca tag HTML -->
+    </p>
 </body>
 </html>
