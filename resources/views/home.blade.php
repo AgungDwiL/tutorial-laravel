@@ -8,5 +8,7 @@
 @section('content')
     <div class="container">
         <h2>My name is {{$name}}</h2>
+        {{-- <h2>My name is {!!$name!!}</h2> --}}
+        {{-- Gunakan {!! $variabel !!} untuk menerima input tanpa specialize char html (membaca tag html)--}}
     </div>
 @endsection
