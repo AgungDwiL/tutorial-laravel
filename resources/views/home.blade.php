@@ -6,14 +6,11 @@
     <title>Home</title>
 </head>
 <body>
-    <div>
-        <span>
-            <a href="/about">About</a>
-        </span>
-        <span>
-            <a href="/contact">Contact</a>
-        </span>
-    </div>
+    <!-- <?include  'layouts/navigation.blade.php /?> include navigasi menggunakan syntax php -->
+
+    @include('layouts.navigation') 
+    <!-- New Blade include syntax -->
     Home
+
 </body>
 </html>

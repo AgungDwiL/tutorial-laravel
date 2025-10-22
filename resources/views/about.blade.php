@@ -6,14 +6,7 @@
     <title>About Us</title>
 </head>
 <body>
-        <div>
-        <span>
-            <a href="/">Home</a>
-        </span>
-        <span>
-            <a href="/contact">Contact</a>
-        </span>
-    </div>
+     @include('layouts.navigation')
     About Us
 </body>
 </html>
