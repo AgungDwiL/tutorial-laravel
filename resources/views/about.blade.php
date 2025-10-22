@@ -4,6 +4,15 @@
 {{-- Mengisi @yield('page-title') --}}
 @section('page-title', 'About')
 
+{{-- Menambahkan style khusus untuk halaman about--}}
+@section('head')
+    <style>
+        .container {
+            background-color: lightblue;
+        }
+    </style>
+@endsection
+
 {{-- Mengisi @yield('content') --}}
 @section('content')
     <div class="container">
