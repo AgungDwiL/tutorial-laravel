@@ -6,5 +6,7 @@
 
 {{-- Mengisi @yield('content') --}}
 @section('content')
-    Contact Us
+    <div class="container">
+        <h2>Contact Page</h2>
+</div>
 @endsection

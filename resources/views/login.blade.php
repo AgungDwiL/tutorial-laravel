@@ -2,11 +2,11 @@
 @extends('layouts.app')
 
 {{-- Mengisi @yield('page-title') --}}
-@section('page-title', 'Home')
+@section('page-title', 'Login')
 
 {{-- Mengisi @yield('content') --}}
 @section('content')
     <div class="container">
-        <h2>Home Page</h2>
+        <h2>Login Page</h2>
     </div>
 @endsection

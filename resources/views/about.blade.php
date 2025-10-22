@@ -6,5 +6,8 @@
 
 {{-- Mengisi @yield('content') --}}
 @section('content')
-    About Us
+    <div class="container">
+        <h2>About Us</h2>
+        <p>This is the about page of our Laravel application.<
+    </div>
 @endsection
