@@ -7,6 +7,6 @@
 {{-- Mengisi @yield('content') --}}
 @section('content')
     <div class="container">
-        <h2>Home Page</h2>
+        <h2>My name is {{$name}}</h2>
     </div>
 @endsection

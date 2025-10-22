@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    $name = request('name');
+    return view('home', ['name' => $name]);
 });
 
 Route::view('contact', 'contact');
