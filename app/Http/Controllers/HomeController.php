@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
-        $name = "Agung";
-        // sekarang menggunakan compact
-        // compact('name') sama dengan ['name' => $name]
+        $name = 'John Doe';
         return view('home', compact('name'));
     }
 }

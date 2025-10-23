@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController'); // Invokes the __invoke method of HomeController (tanpa menyebutkan metode secara eksplisit)
 
 Route::view('contact', 'contact');
 Route::view('about', 'about');
