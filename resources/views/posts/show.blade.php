@@ -2,11 +2,12 @@
 @extends('layouts.app')
 
 {{-- Mengisi @yield('page-title') --}}
-@section('page-title', $slug)
+@section('page-title', $post->title)
 
 {{-- Mengisi @yield('content') --}}
 @section('content')
     <div class="container">
-        <h2>This is my slug {{$slug}}</h2>
+        <h2>{{$post->title}}</h2>
+        <p>{{$post->body}}</p>
     </div>
 @endsection
