@@ -16,13 +16,13 @@
             <a class="nav-link{{request()->is('/') ? ' active' : ''}}" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link{{request()->is('contact') ? ' active' : ''}}" href="contact">Contact</a>
+            <a class="nav-link{{request()->is('contact') ? ' active' : ''}}" href='{{url('contact')}}'>Contact</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link{{request()->is('about') ? ' active' : ''}}" href="about">About</a>
+            <a class="nav-link{{request()->is('about') ? ' active' : ''}}" href='{{url('about')}}'>About</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link{{request()->is('login') ? ' active' : ''}}" href="login">Login</a>
+            <a class="nav-link{{request()->is('login') ? ' active' : ''}}" href='{{url('login')}}'>Login</a>
         </li>
     </ul>
 </nav>
