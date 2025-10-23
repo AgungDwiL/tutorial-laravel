@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 {{-- Mengisi @yield('page-title') --}}
-@section('page-title', 'The Post')
+@section('page-title', $slug)
 
 {{-- Mengisi @yield('content') --}}
 @section('content')
