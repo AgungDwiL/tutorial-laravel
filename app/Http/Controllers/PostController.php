@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use App\post;
 
 class PostController extends Controller
 {
     public function show($slug)
     {
         // Ambil data dari database
-        $post = \App\post::where('slug', $slug)->firstOrFail(); 
+        $post = post::where('slug', $slug)->firstOrFail(); 
         // firstOrFail() akan mengembalikan 404 otomatis jika data tidak ditemukan
 
         // Untuk validasi apakah post tersedia bisa menggunakan :
