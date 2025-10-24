@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link{{request()->is('/')?" active":""}}" aria-current="page" href="/">Home</a>
+          <a class="nav-link{{request()->is('/')?" active":""}}" href="/">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link{{request()->is('login')?" active":""}}" href="login">Login</a>

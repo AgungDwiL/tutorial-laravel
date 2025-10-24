@@ -10,3 +10,4 @@ Route::view('/login', 'login');
 Route::view('/contact', 'contact');
 Route::view('/about', 'about');
 
+Route::get('/users/{slug}', 'LoginController@welcome');
