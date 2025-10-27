@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class post extends Model
 {
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+    //fungsi sudah tidak digunakan karena sudah menggunakan model binding pakai colon (:) di route
+    //public function getRouteKeyName()
+    //{
+    //    return 'slug';
+    //}
 }
