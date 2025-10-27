@@ -9,4 +9,6 @@ Route::view('about', 'about');
 Route::view('login', 'login');
 
 // taruh wildcard {slug} untuk menangkap segment URL setelah URL spesifik
-Route::get('posts/{slug}', 'PostController@show'); // Memanggil metode show pada PostController
+Route::get('posts/{post}', 'PostController@show'); 
+// Memanggil metode show pada PostController menggunakan model binding
+// sebelumnya Route::get('posts/{slug}', 'PostController@show');

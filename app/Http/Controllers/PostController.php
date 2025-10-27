@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\post;
+use PhpParser\Node\Expr\PostDec;
 
 class PostController extends Controller
 {
-    public function show($slug)
+    public function show(Post $post)
     {
         // Ambil data dari database
-        $post = post::where('slug', $slug)->firstOrFail(); 
+        // $post = post::where('slug', $slug)->firstOrFail(); (tidak dipakai karena pakai model binding)
         // firstOrFail() akan mengembalikan 404 otomatis jika data tidak ditemukan
 
         // Untuk validasi apakah post tersedia bisa menggunakan :
@@ -22,8 +23,6 @@ class PostController extends Controller
         // if(is_null($post)) {
         //     abort(404);
         // }
-
-        
 
         // Logika untuk menampilkan postingan berdasarkan slug
         return view('posts.show', compact('post'));
