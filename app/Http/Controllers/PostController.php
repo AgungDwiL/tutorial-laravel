@@ -7,7 +7,7 @@ use PhpParser\Node\Expr\PostDec;
 
 class PostController extends Controller
 {
-    public function show(Post $post)
+    public function show(Post $post) // kalau cara model binding seperti ini maka yang diselect adalah id nya
     {
         // Ambil data dari database
         // $post = post::where('slug', $slug)->firstOrFail(); (tidak dipakai karena pakai model binding)
