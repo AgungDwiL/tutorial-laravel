@@ -9,6 +9,6 @@ Route::view('about', 'about');
 Route::view('login', 'login');
 
 // taruh wildcard {slug} untuk menangkap segment URL setelah URL spesifik
-Route::get('posts/{post}', 'PostController@show'); 
+Route::get('posts/{post::slug}', 'PostController@show'); //using method colon (Model::columns_object)
 // Memanggil metode show pada PostController menggunakan model binding
 // sebelumnya Route::get('posts/{slug}', 'PostController@show');
