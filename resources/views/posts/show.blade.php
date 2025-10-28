@@ -10,8 +10,9 @@
         <h2>{{$post->title}}</h2>
         <p>{{$post->body}}</p>
 
-        <div>
-            <a class="py-3" href="\posts">Back</a>
+        <div class="d-flex justify-content-between align-items-center">
+            <a class="btn btn-primary" href="\posts">Back</a>
+            <a class="btn btn-success" href="\posts\{{ $post->slug }}\edit">Edit</a>
         </div>
     </div>
 

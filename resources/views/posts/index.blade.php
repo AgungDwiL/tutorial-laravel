@@ -25,7 +25,10 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="fw-lighter float-end" > Published on {{$post->created_at->diffForHumans()}} </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a class="btn btn-success btn-sm" href="/posts/{{ $post->slug }}/edit">Edit</a>
+                            <p class="fw-lighter mb-0" >Published on {{$post->created_at->diffForHumans()}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
