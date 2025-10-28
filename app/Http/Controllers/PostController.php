@@ -1,30 +1,85 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
-use App\post;
-use PhpParser\Node\Expr\PostDec;
+
+use App\Post;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function show(Post $post) // kalau cara model binding seperti ini maka yang diselect adalah id nya
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        // Ambil data dari database
-        // $post = post::where('slug', $slug)->firstOrFail(); (tidak dipakai karena pakai model binding)
-        // firstOrFail() akan mengembalikan 404 otomatis jika data tidak ditemukan
+        //
+    }
 
-        // Untuk validasi apakah post tersedia bisa menggunakan :
-        // 1. seperti ini
-        // if(!$post) {
-        //     abort(404);
-        // }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
-        // 2. seperti ini
-        // if(is_null($post)) {
-        //     abort(404);
-        // }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-        // Logika untuk menampilkan postingan berdasarkan slug
-        return view('posts.show', compact('post'));
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Post $post)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Post $post)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Post $post)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Post $post)
+    {
+        //
     }
 }
