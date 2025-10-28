@@ -12,10 +12,15 @@
                         {{ $post->title }}
                     </div>
                     <div class="card-body">
-                        {{ $post->body }}
+                        {{ Str::limit($post->body, 100, ' ...') }}
+                        <div>
+                            <a href="#">Read more</a>
+                        </div>
                     </div>
                 </div>
             @endforeach
+
+            {{$posts->links()}}
         </div>
     </div>
 </div>
