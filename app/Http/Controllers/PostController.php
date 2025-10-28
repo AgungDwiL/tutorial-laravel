@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+
 class PostController extends Controller
 {
     public function index()
@@ -23,5 +25,22 @@ class PostController extends Controller
 
     public function create() {
         return view('posts.create');
+    }
+
+    public function store() {
+        // Validate input
+        $post = request()->validate([
+            'title' => 'required',
+            'body'  => 'required'
+        ]);
+
+        // Assign slug
+        $post['slug'] = Str::slug(request('title'));
+
+        // Metode eloquent
+        Post::create($post);
+
+        return back();
+        
     }
 }
