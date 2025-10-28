@@ -14,4 +14,10 @@ class PostController extends Controller
         $posts = Post::paginate(2);
         return view('posts.index',compact('posts'));
     }
+
+    public function show($slug)
+    {
+        $post = Post::where('slug',$slug)->firstOrFail();
+        return view('posts.show', compact('post'));
+    }
 }

@@ -14,7 +14,7 @@
                     <div class="card-body">
                         {{ Str::limit($post->body, 100, ' ...') }}
                         <div>
-                            <a href="#">Read more</a>
+                            <a href="/posts/{{$post->slug}}">Read more</a>
                         </div>
                     </div>
                 </div>

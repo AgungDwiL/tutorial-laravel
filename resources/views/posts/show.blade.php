@@ -9,5 +9,11 @@
     <div class="container">
         <h2>{{$post->title}}</h2>
         <p>{{$post->body}}</p>
+
+        <div>
+            <a class="py-3" href="\posts">Back</a>
+        </div>
     </div>
+
+
 @endsection
