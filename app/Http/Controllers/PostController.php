@@ -11,7 +11,7 @@ class PostController extends Controller
         // $posts = Post::get();
 
         // Tutorial Pagination
-        $posts = Post::paginate(2);
+        $posts = Post::paginate(6);
         return view('posts.index',compact('posts'));
     }
 
