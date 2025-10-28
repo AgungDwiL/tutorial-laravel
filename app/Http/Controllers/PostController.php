@@ -40,7 +40,13 @@ class PostController extends Controller
         // Metode eloquent
         Post::create($post);
 
-        return back();
+        // Make alert
+        session()->flash('success', 'The post has been created!');
+        session()->flash('errror', 'Error occured when creating post!');
+        // atau bisa juga bikin alert itu
+        // return redirect('...')->with('success', '....') //syaratnya pakai redirect, diblade cara manggilnya sama
+
+        return redirect('posts');
         
     }
 }

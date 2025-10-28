@@ -10,10 +10,12 @@
 </head>
 <body>
     @include('layouts.navigation')
+    @include('layouts.alert')
     <div class="py-4">
         @yield('content')
     </div>
 
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     @yield('scripts')
 </body>
 </html>
