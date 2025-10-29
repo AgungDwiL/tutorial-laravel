@@ -18,6 +18,8 @@ Route::get('/posts/{post:slug}/edit', 'PostController@edit');
 Route::patch('/posts/{post:slug}/edit', 'PostController@update');
 Route::delete('posts/{post:slug}/delete', 'PostController@destroy');
 
+Route::get('categories/{category:slug}', 'CategoryController@show');
+
 Route::get('posts/{post:slug}', 'PostController@show'); //using method colon (Model:columns_object)
 
 // Memanggil metode show pada PostController menggunakan model binding

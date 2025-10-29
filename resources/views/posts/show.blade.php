@@ -8,6 +8,10 @@
 @section('content')
     <div class="container">
         <h2>{{$post->title}}</h2>
+        <div class="text-secondary">
+            {{ $post->category->name }} &middot; {{ $post->created_at->format("d F, Y") }}
+        </div>
+        <hr>
         <p>{{$post->body}}</p>
 
         <div class="d-flex justify-content-between align-items-center">
