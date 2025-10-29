@@ -13,16 +13,23 @@ class PostController extends Controller
     {
         // $posts = Post::get();
 
+        // Save current page number in session
+        $page = request()->get('page', 1);
+        session()->put('posts_page', $page);
+
         // Tutorial Pagination
         $posts = Post::paginate(6);
-        return view('posts.index',compact('posts'));
+        return view('posts.index',compact('posts', 'page'));
     }
 
     public function show($slug)
     {
+        // Retrieve the last page visited from session
+        $page = session('posts_page', 1);
+
         $post = Post::where('slug',$slug)->firstOrFail();
         
-        return view('posts.show', compact('post'));
+        return view('posts.show', compact('post', 'page'));
     }
 
     public function create() {
@@ -55,6 +62,8 @@ class PostController extends Controller
     }
 
     public function edit($slug) {
+
+        $page = session('posts_page', 1);
         
         $post = Post::where('slug',$slug)->firstOrFail();
         
@@ -80,6 +89,12 @@ class PostController extends Controller
             session()->flash('error', 'Error occured when updating post!');
             return redirect('posts');
         }
+    }
+
+    public function destroy(Post $post){
+        dd($post);
+
+
     }
 
     // Ganti pakai class request requestValidated()

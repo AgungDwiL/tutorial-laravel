@@ -12,7 +12,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
             <a class="btn btn-success" href="\posts\{{ $post->slug }}\edit">Edit</a>
-            <a class="btn btn-danger" href="{{ url()->previous() }}">Back</a>
+            <a class="btn btn-warning" href="{{ route('posts.index', ['page' => $page > 1 ? $page : null]) }}">Back</a>
         </div>
     </div>
 

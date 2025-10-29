@@ -9,13 +9,14 @@ Route::view('about', 'about');
 Route::view('login', 'login');
 
 // taruh wildcard {slug} untuk menangkap segment URL setelah URL spesifik
-Route::get('posts', 'PostController@index');
+Route::get('posts', 'PostController@index')->name('posts.index');
 
 Route::get('/posts/create', 'PostController@create');
-Route::post('/posts/create', 'PostController@store')->name('Post.store');
+Route::post('/posts/create', 'PostController@store');
 
 Route::get('/posts/{post:slug}/edit', 'PostController@edit');
 Route::patch('/posts/{post:slug}/edit', 'PostController@update');
+Route::get('posts/{post:slug}/delete', 'PostController@destroy');
 
 Route::get('posts/{post:slug}', 'PostController@show'); //using method colon (Model:columns_object)
 
