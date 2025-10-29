@@ -11,7 +11,7 @@
         <p>{{$post->body}}</p>
 
         <div class="d-flex justify-content-between align-items-center">
-            <a class="btn btn-primary" href="\posts">Back</a>
+            <a class="btn btn-primary" href="{{ url()->previous() }}">Back</a>
             <a class="btn btn-success" href="\posts\{{ $post->slug }}\edit">Edit</a>
         </div>
     </div>

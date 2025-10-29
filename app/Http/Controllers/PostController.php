@@ -29,10 +29,7 @@ class PostController extends Controller
 
     public function store() {
         // Validate input
-        $post = request()->validate([
-            'title' => 'required|max:191',
-            'body'  => 'required'
-        ]);
+        $post = $this->validateRequest();
 
         // Assign slug
         $post['slug'] = Str::slug(request('title'));
@@ -58,13 +55,7 @@ class PostController extends Controller
 
     public function update($slug) {
     // Validate input
-    $new_post = request()->validate([
-        'title' => 'required|max:191',
-        'body'  => 'required',
-    ]);
-
-    // Assign new slug
-    $new_post['slug'] = Str::slug(request('title'));
+    $new_post = $this->validateRequest();
 
     // Find post by slug
     $post = Post::where('slug', $slug)->firstOrFail();
@@ -78,5 +69,14 @@ class PostController extends Controller
 
     // Redirect or return response
     return redirect('posts');
+    }
+
+    private function validateRequest(){
+        $validated = request()->validate([
+            'title' => 'required|max:191',
+            'body'  => 'required',
+        ]);
+
+        return $validated;
     }
 }
