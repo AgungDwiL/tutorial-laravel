@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestValidated;
 use App\Post;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -27,9 +27,13 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store() {
-        // Validate input
-        $post = $this->validateRequest();
+    public function store(RequestValidated $request) {
+
+        //ganti pakai requestValidated
+        // $post = $this->validateRequest();
+        
+        //mengambil data array input + token
+        $post = $request->all();
 
         // Assign slug
         $post['slug'] = Str::slug(request('title'));
@@ -53,30 +57,33 @@ class PostController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function update($slug) {
-    // Validate input
-    $new_post = $this->validateRequest();
+    public function update(requestValidated $request, $slug) {
+        // Validate input
+        // $new_post = $this->validateRequest(); //ganti pakai requestValidated
 
-    // Find post by slug
-    $post = Post::where('slug', $slug)->firstOrFail();
+        $new_post = $request->all();
 
-    // Update data
-    $post->update($new_post);
+        // Find post by slug
+        $post = Post::where('slug', $slug)->firstOrFail();
 
-    // Flash success message
-    session()->flash('success', 'The post has been updated!');
-    session()->flash('error', 'Error occured when updating post!');
+        // Update data
+        $post->update($new_post);
 
-    // Redirect or return response
-    return redirect('posts');
+        // Flash success message
+        session()->flash('success', 'The post has been updated!');
+        session()->flash('error', 'Error occured when updating post!');
+
+        // Redirect or return response
+        return redirect('posts');
     }
 
-    private function validateRequest(){
-        $validated = request()->validate([
-            'title' => 'required|max:191',
-            'body'  => 'required',
-        ]);
+    // Ganti pakai class request requestValidated()
+    // private function validateRequest(){
+    // $validated = request()->validate([
+    //     'title' => 'required|max:191',
+    //     'body'  => 'required',
+    // ]);
 
-        return $validated;
-    }
+    //     return $validated;
+    // }
 }
