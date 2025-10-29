@@ -92,9 +92,9 @@ class PostController extends Controller
     }
 
     public function destroy(Post $post){
-        dd($post);
-
-
+        $post->delete();
+        session()->flash('success', 'The post was destroyed');
+        return redirect('posts');
     }
 
     // Ganti pakai class request requestValidated()

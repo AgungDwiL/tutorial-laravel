@@ -16,7 +16,7 @@ Route::post('/posts/create', 'PostController@store');
 
 Route::get('/posts/{post:slug}/edit', 'PostController@edit');
 Route::patch('/posts/{post:slug}/edit', 'PostController@update');
-Route::get('posts/{post:slug}/delete', 'PostController@destroy');
+Route::delete('posts/{post:slug}/delete', 'PostController@destroy');
 
 Route::get('posts/{post:slug}', 'PostController@show'); //using method colon (Model:columns_object)
 
