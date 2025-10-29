@@ -10,7 +10,7 @@
 </head>
 <body>
     @include('layouts.navigation')
-    @include('layouts.alert')
+    @include('partials.alert')
     <div class="py-4">
         @yield('content')
     </div>

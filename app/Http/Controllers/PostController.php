@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RequestValidated;
 use App\Post;
+use Exception;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -20,6 +21,7 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug',$slug)->firstOrFail();
+        
         return view('posts.show', compact('post'));
     }
 
@@ -38,16 +40,18 @@ class PostController extends Controller
         // Assign slug
         $post['slug'] = Str::slug(request('title'));
 
-        // Metode eloquent
-        Post::create($post);
-
         // Make alert
-        session()->flash('success', 'The post has been created!');
-        session()->flash('error', 'Error occured when creating post!');
+        try{
+            Post::create($post);
+            session()->flash('success', 'The post has been created!');
+            return redirect('posts');
+        } catch (Exception $e){
+            session()->flash('error', 'Error occured when creating post!');
+            return redirect('posts');
+        }
+
         // atau bisa juga bikin alert itu
         // return redirect('...')->with('success', '....') //syaratnya pakai redirect, diblade cara manggilnya sama
-
-        return redirect('posts');
     }
 
     public function edit($slug) {
@@ -66,15 +70,16 @@ class PostController extends Controller
         // Find post by slug
         $post = Post::where('slug', $slug)->firstOrFail();
 
-        // Update data
-        $post->update($new_post);
-
         // Flash success message
-        session()->flash('success', 'The post has been updated!');
-        session()->flash('error', 'Error occured when updating post!');
-
-        // Redirect or return response
-        return redirect('posts');
+        try{
+            // Update data
+            $post->update($new_post);
+            session()->flash('success', 'The post has been updated!');
+            return redirect('posts');
+        } catch (Exception $e){
+            session()->flash('error', 'Error occured when updating post!');
+            return redirect('posts');
+        }
     }
 
     // Ganti pakai class request requestValidated()
