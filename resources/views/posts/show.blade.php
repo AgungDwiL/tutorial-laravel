@@ -9,8 +9,14 @@
     <div class="container">
         <h2>{{$post->title}}</h2>
         <div class="text-secondary">
-            <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none text-primary">
+            <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none text-primary" style="transition: opacity 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
             {{ $post->category->name }}</a> &middot; {{ $post->created_at->format("d F, Y") }}
+            <br>
+            @foreach ($post->tags as $tag)
+                <span class="badge bg-info border">
+                    <a href="/tags/{{ $tag->slug }}" class="text-dark text-decoration-none" style="transition: opacity 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">{{ $tag->name }}</a>
+                </span>
+            @endforeach
         </div>
         <hr>
         <p>{{$post->body}}</p>

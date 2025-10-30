@@ -4,11 +4,17 @@
 <div class="container">
     <div class="row align-items-center mb-4">
         <div class="col-md-6">
-            @if(@isset($category))
+            @if(isset($category))
                 <h4 class="mb-0 pb-2 border-bottom border-2 border-primary d-inline-block">Category : {{ $category->name }}</h4>
-            @else
+            @endif
+
+            @if(isset($tag))
+                <h4 class="mb-0 pb-2 border-bottom border-2 border-primary d-inline-block">Tag : {{ $tag->name }}</h4>
+            @endif
+            
+            @if(!isset($tag) && !isset($category))
                 <h4 class="mb-0 pb-2 border-bottom border-2 border-primary d-inline-block">All Posts</h4>
-            @endisset
+            @endif
         </div>
         <div class="col-md-6 text-end">
             <a href="/posts/create" class="btn btn-primary">New Post</a>
