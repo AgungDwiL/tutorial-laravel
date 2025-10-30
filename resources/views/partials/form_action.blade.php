@@ -29,10 +29,8 @@
                             <label for="category">Category</label>
                             <select type="text" name="category" id="category" class="form-control @error('category') is-invalid @enderror" >
                                 @if($is_edit)
-                                    <option selected value="{{ $post->category->id }}">{{ $post->category->name }}</option>
                                     @foreach ( $categories as $category )
-                                        @continue ($category->id == $post->category->id)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option {{ $category->id == $post->category_id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 @else
                                     <option disabled selected>Choose one!</option>
@@ -50,11 +48,20 @@
 
                         <div class="form-group mb-3">
                             <label for="tags">Tag(s)</label>
-                            <select name="tags" id="tags" class="form-control" multiple>
-                                <option disabled selected>Choose Tags!</option>
-                                @foreach ($tags as $tag)
-                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                                @endforeach
+                            <select name="tags[]" id="tags" class="form-control @error('tags') is-invalid @enderror" multiple>
+                                @if($is_edit)
+                                    @foreach ($post->tags as $tag)
+                                        <option selected value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                    @endforeach
+                                    @foreach ($tags->diff($post->tags) as $tag)
+                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                    @endforeach
+                                @else
+                                    <option disabled selected>Choose Tags!</option>
+                                    @foreach ($tags as $tag)
+                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                             @error('tags')
                                 <div class="invalid-feedback">

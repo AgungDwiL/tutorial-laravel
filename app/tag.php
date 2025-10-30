@@ -9,6 +9,6 @@ class tag extends Model
 {
     public function posts()
     {
-        return $this->BelongsToMany(Post::class);
+        return $this->belongsToMany(Post::class);
     }
 }

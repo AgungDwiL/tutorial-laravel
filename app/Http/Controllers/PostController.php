@@ -43,16 +43,18 @@ class PostController extends Controller
 
         //ganti pakai requestValidated
         // $post = $this->validateRequest();
-        
+
         //mengambil data array input + token
-        $post = $request->all();
+        $attr = $request->all();
 
         // Assign slug
-        $post['slug'] = Str::slug(request('title'));
+        $attr['slug'] = Str::slug(request('title'));
+        $attr['category_id'] = request('category');
 
         // Make alert
         try{
-            Post::create($post);
+            $post = Post::create($attr);
+            $post->tags()->attach(request('tags'));
             session()->flash('success', 'The post has been created!');
             return redirect('posts');
         } catch (Exception $e){
@@ -74,19 +76,18 @@ class PostController extends Controller
         return view('posts.edit', compact('post', 'categories', 'tags'));
     }
 
-    public function update(requestValidated $request, $slug) {
+    public function update(requestValidated $request, Post $post) {
         // Validate input
         // $new_post = $this->validateRequest(); //ganti pakai requestValidated
 
-        $new_post = $request->all();
-
-        // Find post by slug
-        $post = Post::where('slug', $slug)->firstOrFail();
+        $attr = $request->all();
+        $attr['category_id'] = request('category');
 
         // Flash success message
         try{
             // Update data
-            $post->update($new_post);
+            $post->tags()->sync(request('tags'));
+            $post->update($attr);
             session()->flash('success', 'The post has been updated!');
             return redirect('posts');
         } catch (Exception $e){
@@ -97,6 +98,7 @@ class PostController extends Controller
 
     public function destroy(Post $post){
         $post->delete();
+        $post->tags()->detach();
         session()->flash('success', 'The post was destroyed');
         return redirect('posts');
     }

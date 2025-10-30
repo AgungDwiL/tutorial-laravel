@@ -26,6 +26,8 @@ class RequestValidated extends FormRequest
         return [
             'title' => 'required|max:191',
             'body'  => 'required',
+            'category' =>'required',
+            'tags' => 'array|required'
         ];
     }
 }
