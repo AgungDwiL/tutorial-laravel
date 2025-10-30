@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RequestValidated;
-use App\Post;
+use App\{tag, Post, Category};
 use Exception;
 use Illuminate\Support\Str;
+use App\Http\Requests\RequestValidated;
 
 class PostController extends Controller
 {
@@ -33,7 +33,10 @@ class PostController extends Controller
     }
 
     public function create() {
-        return view('posts.create');
+        return view('posts.create', [
+            'categories' => Category::get(),
+            'tags'      => tag::get()
+        ]);
     }
 
     public function store(RequestValidated $request) {
@@ -64,10 +67,11 @@ class PostController extends Controller
     public function edit($slug) {
 
         $page = session('posts_page', 1);
-        
+        $categories = Category::get();
+        $tags = tag::get();
         $post = Post::where('slug',$slug)->firstOrFail();
         
-        return view('posts.edit', compact('post'));
+        return view('posts.edit', compact('post', 'categories', 'tags'));
     }
 
     public function update(requestValidated $request, $slug) {
