@@ -56,7 +56,6 @@
                                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                     @endforeach
                                 @else
-                                    <option disabled selected>Choose Tags!</option>
                                     @foreach ($tags as $tag)
                                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                     @endforeach
