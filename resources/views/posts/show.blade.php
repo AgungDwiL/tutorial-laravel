@@ -21,7 +21,7 @@
         <hr>
         <p>{{$post->body}}</p>
 
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-around align-items-center">
             {{-- anchor hanya menangani metode HTTP method : "GET", oleh karena itu perlu pakai form --}}
             <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
             <a class="btn btn-success" href="\posts\{{ $post->slug }}\edit">Edit</a>
