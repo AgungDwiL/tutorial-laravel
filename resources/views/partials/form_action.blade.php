@@ -81,7 +81,7 @@
 
                         <div class="d-flex justify-content-between">
                             <button type="submit" class="{{ $is_edit ? 'btn btn-success' : 'btn btn-primary' }}">{{ $is_edit ? 'Edit' : 'Create'}}</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-warning">Back</a>
+                            <a href="\posts" class="btn btn-warning">Back</a>
                         </div>
             
                     </form>
