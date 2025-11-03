@@ -33,7 +33,6 @@
                                         <option {{ $category->id == $post->category_id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 @else
-                                    <option disabled selected>Choose one!</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -48,7 +47,7 @@
 
                         <div class="form-group mb-3">
                             <label for="tags">Tag(s)</label>
-                            <select name="tags[]" id="tags" class="form-control @error('tags') is-invalid @enderror" multiple>
+                            <select name="tags[]" id="tags" class="form-control select2 @error('tags') is-invalid @enderror" multiple>
                                 @if($is_edit)
                                     @foreach ($post->tags as $tag)
                                         <option selected value="{{ $tag->id }}">{{ $tag->name }}</option>
