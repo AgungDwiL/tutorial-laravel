@@ -1,8 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', 'HomeController'); // Invokes the __invoke method of HomeController (tanpa menyebutkan metode secara eksplisit)
 
 Route::view('contact', 'contact');
 Route::view('about', 'about');
@@ -25,3 +24,7 @@ Route::get('posts/{post:slug}', 'PostController@show'); //using method colon (Mo
 
 // Memanggil metode show pada PostController menggunakan model binding
 // sebelumnya Route::get('posts/{slug}', 'PostController@show');
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');

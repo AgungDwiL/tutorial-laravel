@@ -1,14 +1,23 @@
-{{-- Memanggil halaman app.blade.php --}}
 @extends('layouts.app')
 
-{{-- Mengisi @yield('page-title') --}}
-@section('page-title', 'Home')
-
-{{-- Mengisi @yield('content') --}}
 @section('content')
-    <div class="container">
-        <h2>My name is {{$name}}</h2>
-        {{-- <h2>My name is {!!$name!!}</h2> --}}
-        {{-- Gunakan {!! $variabel !!} untuk menerima input tanpa specialize char html (membaca tag html)--}}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 @endsection
