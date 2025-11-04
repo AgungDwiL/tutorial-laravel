@@ -5,13 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('contact', 'contact');
 Route::view('about', 'about');
-Route::view('login', 'login');
 
 // taruh wildcard {slug} untuk menangkap segment URL setelah URL spesifik
 Route::get('posts', 'PostController@index')->name('posts.index');
 
-Route::get('/posts/create', 'PostController@create');
-Route::post('/posts/create', 'PostController@store');
+Route::get('/posts/create', 'PostController@create')->name('posts.create');
+Route::post('/posts/create', 'PostController@store')->name('posts.store');
 
 Route::get('/posts/{post:slug}/edit', 'PostController@edit');
 Route::patch('/posts/{post:slug}/edit', 'PostController@update');

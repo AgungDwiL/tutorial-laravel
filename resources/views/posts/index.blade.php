@@ -16,8 +16,12 @@
                 <h4 class="mb-0 pb-2 border-bottom border-2 border-primary d-inline-block">All Posts</h4>
             @endif
         </div>
-        <div class="col-md-6 text-end">
-            <a href="/posts/create" class="btn btn-primary">New Post</a>
+        <div class="col-md-6 text-right">
+            @auth
+                <a href="{{ route('posts.create') }}" class="btn btn-primary">New Post</a>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-primary">Login to Create New Post</a>
+            @endauth
         </div>
     </div>
 
@@ -25,7 +29,7 @@
         @foreach ($posts as $post)
             <div class="col-md-4">
                 <div class="card mb-3">
-                    <div class="card-header">
+                    <div class="card-header font-weight-bold">
                         {{ $post->title }}
                     </div>
                     <div class="card-body">
@@ -36,7 +40,9 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-between align-items-center">
-                            <a class="btn btn-success btn-sm" href="/posts/{{ $post->slug }}/edit">Edit</a>
+                            @auth
+                                <a class="btn btn-success btn-sm" href="/posts/{{ $post->slug }}/edit">Edit</a>
+                            @endauth
                             <p class="fw-lighter mb-0" >Published on {{$post->created_at->diffForHumans()}}</p>
                         </div>
                     </div>
