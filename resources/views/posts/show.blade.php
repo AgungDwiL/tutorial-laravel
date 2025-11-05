@@ -23,8 +23,10 @@
 
         <div class="d-flex justify-content-around align-items-center">
             {{-- anchor hanya menangani metode HTTP method : "GET", oleh karena itu perlu pakai form --}}
+            @auth
             <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
-            <a class="btn btn-success" href="\posts\{{ $post->slug }}\edit">Edit</a>
+            <a class="btn btn-success" href="\posts\{{ $post->slug }}\edit">Edit</a>    
+            @endauth
             <a class="btn btn-warning" href="{{ route('posts.index', ['page' => $page > 1 ? $page : null]) }}">Back</a>
         </div>
     </div>
