@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\{tag, Post, Category};
+use App\{Tag, Post, Category};
 use Exception;
 use Illuminate\Support\Str;
 use App\Http\Requests\RequestValidated;
@@ -35,7 +35,7 @@ class PostController extends Controller
     public function create() {
         return view('posts.create', [
             'categories' => Category::get(),
-            'tags'      => tag::get()
+            'tags'      => Tag::get()
         ]);
     }
 
@@ -50,11 +50,10 @@ class PostController extends Controller
         // Assign slug
         $attr['slug'] = Str::slug(request('title'));
         $attr['category_id'] = request('category');
-        $attr['user_id'] = auth()->id();
 
         // Make alert
         try{
-            $post = Post::create($attr);
+            $post = auth()->user()->posts()->create($attr);
             $post->tags()->attach(request('tags'));
             session()->flash('success', 'The post has been created!');
             return redirect('posts');
