@@ -1,10 +1,10 @@
 <?php
 
-use App\Category;
+use App\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
-class CategoriesTableSeeder extends Seeder
+class TagsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,9 +13,9 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = collect(['Framework', 'Code']);
-        $categories->each(function($c){
-            Category::create([
+        $tags = collect(['Laravel', 'Bug', 'Help']);
+        $tags->each(function($c){
+            Tag::create([
                 'name' => $c,
                 'slug' => Str::slug($c)
             ]);

@@ -38,7 +38,8 @@ class RefreshDatabaseCommand extends Command
     public function handle()
     {
         $this->call('migrate:refresh');
-        $this->info('This command has been run');
+        $this->call('db:seed');
+        $this->info('All databases has been refreshed and seeded');
     }
 
 }
