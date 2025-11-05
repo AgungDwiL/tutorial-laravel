@@ -80,6 +80,7 @@ class PostController extends Controller
         // Validate input
         // $new_post = $this->validateRequest(); //ganti pakai requestValidated
 
+        $this->authorize('update', $post);
         $attr = $request->all();
         $attr['category_id'] = request('category');
 
@@ -97,6 +98,7 @@ class PostController extends Controller
     }
 
     public function destroy(Post $post){
+        $this->authorize('delete', $post);
         $post->delete();
         $post->tags()->detach();
         session()->flash('success', 'The post was destroyed');

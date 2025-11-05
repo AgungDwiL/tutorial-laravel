@@ -24,10 +24,10 @@
         <div class="text-secondary small mb-3">Penulis: {{ $post->user->name }}</div>
         <div class="d-flex justify-content-around align-items-center">
             {{-- anchor hanya menangani metode HTTP method : "GET", oleh karena itu perlu pakai form --}}
-            @if(auth()->user()->id == $post->user_id)
-                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+            @can('update', $post)
+                <a class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</a>
                 <a class="btn btn-success" href="\posts\{{ $post->slug }}\edit">Edit</a>    
-            @endif
+            @endcan
             <a class="btn btn-warning" href="{{ route('posts.index', ['page' => $page > 1 ? $page : null]) }}">Back</a>
         </div>
     </div>
@@ -38,15 +38,15 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+                        <span>&times;</span> 
                     </button>
                 </div>
             <div class="modal-body">
                 Are you sure you want to delete this post?
             </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
                     <form action="\posts\{{ $post->slug }}\delete" method="POST">
                         @csrf
                         @method('delete')

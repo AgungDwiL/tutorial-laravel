@@ -40,9 +40,9 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-between align-items-center">
-                            @if(auth()->user()->id == $post->user_id)
+                            @can('update', $post)
                                 <a class="btn btn-success btn-sm" href="/posts/{{ $post->slug }}/edit">Edit</a>
-                            @endif
+                            @endcan
                             <p class="fw-lighter mb-0" >Published on {{$post->created_at->diffForHumans()}}</p>
                         </div>
                     </div>
