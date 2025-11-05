@@ -50,6 +50,7 @@ class PostController extends Controller
         // Assign slug
         $attr['slug'] = Str::slug(request('title'));
         $attr['category_id'] = request('category');
+        $attr['user_id'] = auth()->id();
 
         // Make alert
         try{
